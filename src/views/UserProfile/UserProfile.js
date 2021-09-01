@@ -9,6 +9,7 @@ import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   cardCategoryWhite: {
@@ -50,11 +51,13 @@ export default function UserProfile() {
   const [age, setAge] = useState();
   const [retirement, setRetirement] = useState();
   const [savings, setSavings] = useState();
+  const [final, setFinal] = useState();
   const classes = useStyles();
   const calculate = () => {
     const result =
       (amount - savings * (1 + interest / 12) ** (retirement - age * 12)) / ((1 + interest / 12) ** ((retirement - age) * 12) - 1);
-    console.log(result);
+    console.log(amount-savings);
+    setFinal(result)
   };
   console.log(age);
   console.log(amount);
@@ -134,6 +137,7 @@ export default function UserProfile() {
               <GridContainer>
                 <GridItem xs={6} sm={6} md={6}>
                   <Button color="primary" onClick={calculate}>Calculate</Button>
+                  <Typography>${final}</Typography>
                 </GridItem>
               </GridContainer>
             </CardBody>
