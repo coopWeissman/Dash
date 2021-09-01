@@ -54,16 +54,12 @@ export default function UserProfile() {
   const [final, setFinal] = useState();
   const classes = useStyles();
   const calculate = () => {
-    const result =
-      (amount - savings * (1 + interest / 12) ** (retirement - age * 12)) / ((1 + interest / 12) ** ((retirement - age) * 12) - 1);
-    console.log(amount-savings);
+    const result = (interest/12*(amount-savings*(1+interest/12)**((retirement-age)*12)))/((1+interest/12)**((retirement-age)*12)-1)
+    // (r/12*(1000000-I*(1+r/12)**(t*12)))/((1+r/12)**(t*12)-1)
+    const test = (interest/12*(amount-savings*(1+interest/12)**(retirement-age*12)))/((1+interest/12)**((retirement-age)*12)-1)
+    console.log(test)
     setFinal(result)
   };
-  console.log(age);
-  console.log(amount);
-  console.log(interest);
-  console.log(retirement);
-  console.log(savings);
   return (
     <div className="root">
       <GridContainer>
@@ -121,7 +117,7 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Annual Interest rate?"
                     id="country"
-                    change={(e) => setInterest(e.target.value)}
+                    change={(e) => setInterest(e.target.value/100)}
                     formControlProps={{
                       fullWidth: true,
                     }}
