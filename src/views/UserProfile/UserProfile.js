@@ -10,6 +10,8 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
+import Chart from "./Chart";
 
 const useStyles = makeStyles((theme) => ({
   cardCategoryWhite: {
@@ -54,6 +56,7 @@ export default function UserProfile() {
   const [final, setFinal] = useState();
   const classes = useStyles();
   const calculate = () => {
+
     const result = (interest/12*(amount-savings*(1+interest/12)**((retirement-age)*12)))/((1+interest/12)**((retirement-age)*12)-1)
     // (r/12*(1000000-I*(1+r/12)**(t*12)))/((1+r/12)**(t*12)-1)
     const test = (interest/12*(amount-savings*(1+interest/12)**(retirement-age*12)))/((1+interest/12)**((retirement-age)*12)-1)
@@ -72,7 +75,7 @@ export default function UserProfile() {
             </CardHeader>
             <CardBody>
               <GridContainer>
-                <GridItem xs={12} sm={12} md={3}>
+                <GridItem xs={12} sm={12} md={12}>
                   <CustomInput
                     labelText="Current Age?"
                     id="username"
@@ -82,7 +85,7 @@ export default function UserProfile() {
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={12} md={12}>
                   <CustomInput
                     labelText="Current Savings?"
                     id="email-address"
@@ -92,9 +95,7 @@ export default function UserProfile() {
                     }}
                   />
                 </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={3}>
+              <GridItem xs={12} sm={12} md={12}>
                   <CustomInput
                     labelText="Ideal age of retirement?"
                     id="last-name"
@@ -104,7 +105,7 @@ export default function UserProfile() {
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={12} md={12}>
                   <CustomInput
                     labelText="How much do you want?"
                     id="city"
@@ -114,7 +115,7 @@ export default function UserProfile() {
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
+                <GridItem xs={12} sm={12} md={12}>
                   <CustomInput
                     labelText="Annual Interest rate?"
                     id="country"
@@ -123,12 +124,6 @@ export default function UserProfile() {
                       fullWidth: true,
                     }}
                   />
-                </GridItem>
-              </GridContainer>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
-                  <Button color="primary">Next</Button>
-                  <Button color="primary">Back</Button>
                 </GridItem>
               </GridContainer>
               <GridContainer>
@@ -141,6 +136,11 @@ export default function UserProfile() {
           </Card>
         </GridItem>
       </GridContainer>
+    <GridContainer>
+      <Chart/>
+    </GridContainer>
     </div>
+
+
   );
 }
