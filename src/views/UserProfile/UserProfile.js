@@ -54,15 +54,11 @@ export default function UserProfile() {
   const [final, setFinal] = useState();
   const classes = useStyles();
   const calculate = () => {
-<<<<<<< HEAD
-    const result = (interest/12*(amount - savings * (1 + interest / 12) ** (retirement - age * 12)) / ((1 + interest / 12) ** ((retirement - age) * 12) - 1)
-    console.log(amount-savings)
-=======
     const result = (interest/12*(amount-savings*(1+interest/12)**((retirement-age)*12)))/((1+interest/12)**((retirement-age)*12)-1)
     // (r/12*(1000000-I*(1+r/12)**(t*12)))/((1+r/12)**(t*12)-1)
     const test = (interest/12*(amount-savings*(1+interest/12)**(retirement-age*12)))/((1+interest/12)**((retirement-age)*12)-1)
     console.log(test)
->>>>>>> ae973f1dd0b4a2a68c8ca855ac73dbddb4236e95
+
     setFinal(result)
   };
   return (

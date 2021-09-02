@@ -47,10 +47,6 @@ export default function CustomInput(props) {
       inputProps && inputProps.minLength ? inputProps.minLength : undefined,
     step: inputProps && inputProps.step ? inputProps.step : undefined,
   };
-  // function Chang() {
-  //   setAge("hey");
-  //   console.log(age);
-  // }
   return (
     <FormControl
       {...formControlProps}
@@ -74,7 +70,6 @@ export default function CustomInput(props) {
         id={id}
         {...inputProps}
         inputProps={newInputProps}
-        onChange={props.change}
       />
       {error ? (
         <Clear className={classes.feedback + " " + classes.labelRootError} />
@@ -94,5 +89,4 @@ CustomInput.propTypes = {
   error: PropTypes.bool,
   success: PropTypes.bool,
   rtlActive: PropTypes.bool,
-  change: PropTypes.number,
 };
