@@ -60,7 +60,7 @@ export default function UserProfile() {
     const result = (interest/12*(amount-savings*(1+interest/12)**((retirement-age)*12)))/((1+interest/12)**((retirement-age)*12)-1)
     // (r/12*(1000000-I*(1+r/12)**(t*12)))/((1+r/12)**(t*12)-1)
     const test = (amount-savings)
-    console.log(test)
+    console.log(age)
 
     setFinal(result)
   };
@@ -137,7 +137,7 @@ export default function UserProfile() {
         </GridItem>
       </GridContainer>
     <GridContainer>
-      <Chart interest={interest} savings={savings} contributions={result} retirement={retirement}/>
+      <Chart />
     </GridContainer>
     </div>
 
