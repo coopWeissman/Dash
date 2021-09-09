@@ -52,6 +52,8 @@ export default function UserProfile() {
   const [interest, setInterest] = useState();
   const [amount, setAmount] = useState();
   const [age, setAge] = useState();
+  const [income, setIncome] = useState();
+  const [expenses, setExpenses] = useState();
   const [retirement, setRetirement] = useState();
   const [savings, setSavings] = useState();
   const [final, setFinal] = useState();
@@ -92,6 +94,28 @@ export default function UserProfile() {
                     id="email-address"
                     type="number"
                     change={(e) => setSavings(e.target.value)}
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={12}>
+                  <CustomInput
+                    labelText="Monthly Salary?"
+                    id="Monthly Salary"
+                    type="number"
+                    change={(e) => setIncome(e.target.value)}
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={12}>
+                  <CustomInput
+                    labelText="Expenses?"
+                    id="Expenses"
+                    type="number"
+                    change={(e) => setExpenses(e.target.value)}
                     formControlProps={{
                       fullWidth: true,
                     }}
@@ -156,7 +180,7 @@ export default function UserProfile() {
               <p className={classes.cardCategoryWhite}>Scroll over each bar to see projected value by year</p>
             </CardHeader>
             <CardBody>
-      <PieGraph/>
+      <PieGraph contributions={final} income={income} expenses={expenses}/>
     </CardBody>
     </Card>
     </GridContainer>
