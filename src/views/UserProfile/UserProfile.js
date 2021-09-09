@@ -12,6 +12,7 @@ import CardBody from "components/Card/CardBody.js";
 import { Typography } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import Chart from "./Chart";
+import PieGraph from "./PieGraph";
 
 const useStyles = makeStyles((theme) => ({
   cardCategoryWhite: {
@@ -64,14 +65,15 @@ export default function UserProfile() {
 
     setFinal(result)
   };
+  console.log(age)
   return (
     <div className="root">
       <GridContainer>
         <GridItem xs={12} sm={12} md={15}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
-              <p className={classes.cardCategoryWhite}>Complete your profile</p>
+              <h4 className={classes.cardTitleWhite}>Monthly Contribution Calculator</h4>
+              <p className={classes.cardCategoryWhite}>Calculate how much money you need to invest per month to reach your longterm goals</p>
             </CardHeader>
             <CardBody>
               <GridContainer>
@@ -89,6 +91,7 @@ export default function UserProfile() {
                   <CustomInput
                     labelText="Current Savings?"
                     id="email-address"
+                    type="number"
                     change={(e) => setSavings(e.target.value)}
                     formControlProps={{
                       fullWidth: true,
@@ -137,7 +140,26 @@ export default function UserProfile() {
         </GridItem>
       </GridContainer>
     <GridContainer>
-      <Chart />
+      <Card>
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
+              <p className={classes.cardCategoryWhite}>Scroll over each bar to see projected value by year</p>
+            </CardHeader>
+            <CardBody>
+      <Chart age={age} retirement={retirement}  savings={savings} amount={amount} contributions={final} interest={interest}/>
+    </CardBody>
+    </Card>
+    </GridContainer>
+    <GridContainer>
+      <Card>
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
+              <p className={classes.cardCategoryWhite}>Scroll over each bar to see projected value by year</p>
+            </CardHeader>
+            <CardBody>
+      <PieGraph/>
+    </CardBody>
+    </Card>
     </GridContainer>
     </div>
 

@@ -67,6 +67,8 @@ export default function CustomInput(props) {
           disabled: classes.disabled,
           underline: underlineClasses,
         }}
+        type="Number"
+        onChange = {props.change}
         id={id}
         {...inputProps}
         inputProps={newInputProps}
