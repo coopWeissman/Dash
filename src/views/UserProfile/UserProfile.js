@@ -192,7 +192,7 @@ export default function UserProfile() {
     </GridContainer>
     <GridContainer>
     <Grid container spacing={3}>
-    <Grid item xs={6}>
+    <Grid item xs={12}>
       <Card>
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
@@ -205,7 +205,7 @@ export default function UserProfile() {
     </CardBody>
     </Card>
     </Grid>
-    <Grid item xs={6}>
+    <Grid item xs={12}>
       <Card>
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
