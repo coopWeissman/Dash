@@ -13,6 +13,8 @@ import { Typography } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import Chart from "./Chart";
 import PieGraph from "./PieGraph";
+import { AutoScaleAxis } from "chartist";
+import Stats from "./Stats";
 
 const useStyles = makeStyles((theme) => ({
   cardCategoryWhite: {
@@ -46,17 +48,23 @@ const useStyles = makeStyles((theme) => ({
     margin: `${theme.spacing(1)}px auto`,
     padding: theme.spacing(2),
   },
+  centerPie: {
+    justifyContent: "center",
+    alignItems: "center",
+    display: 'flex',
+  }
 }));
 
 export default function UserProfile() {
-  const [interest, setInterest] = useState();
-  const [amount, setAmount] = useState();
-  const [age, setAge] = useState();
-  const [income, setIncome] = useState();
-  const [expenses, setExpenses] = useState();
-  const [retirement, setRetirement] = useState();
-  const [savings, setSavings] = useState();
+  const [interest, setInterest] = useState(.10);
+  const [amount, setAmount] = useState(10000000);
+  const [age, setAge] = useState(16);
+  const [income, setIncome] = useState(1000);
+  const [expenses, setExpenses] = useState(200);
+  const [retirement, setRetirement] = useState(65);
+  const [savings, setSavings] = useState(1000);
   const [final, setFinal] = useState();
+  const spending = income-final-expenses;
   const classes = useStyles();
   const calculate = () => {
 
@@ -172,17 +180,45 @@ export default function UserProfile() {
       <Chart age={age} retirement={retirement}  savings={savings} amount={amount} contributions={final} interest={interest}/>
     </CardBody>
     </Card>
-    </GridContainer>
-    <GridContainer>
-      <Card>
+    <Card>
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
               <p className={classes.cardCategoryWhite}>Scroll over each bar to see projected value by year</p>
             </CardHeader>
             <CardBody>
-      <PieGraph contributions={final} income={income} expenses={expenses}/>
+      <Stats income={income} spending={spending} expenses={expenses} savings={savings}/>
     </CardBody>
     </Card>
+    </GridContainer>
+    <GridContainer>
+    <Grid container spacing={3}>
+    <Grid item xs={6}>
+      <Card>
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
+              <p className={classes.cardCategoryWhite}>Scroll over each bar to see projected value by year</p>
+            </CardHeader>
+    <CardBody className={classes.centerPie}>
+
+      <PieGraph contributions={final} income={income} spending={spending} expenses={expenses}/>
+
+    </CardBody>
+    </Card>
+    </Grid>
+    <Grid item xs={6}>
+      <Card>
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
+              <p className={classes.cardCategoryWhite}>Scroll over each bar to see projected value by year</p>
+            </CardHeader>
+    <CardBody className={classes.centerPie}>
+
+      <PieGraph contributions={final} income={income} spending={spending} expenses={expenses}/>
+
+    </CardBody>
+    </Card>
+    </Grid>
+    </Grid>
     </GridContainer>
     </div>
 

@@ -6,9 +6,10 @@ const COLORS = ["#04abc1", "#4caf4f", "#FF4444", "#FF8042"];
 const income = Number(props.income);
 const contributions = Number(props.contributions);
 const expenses = Number(props.expenses);
+const spending = Number(props.spending);
 const data = [
   { name: "Contributions", value: contributions},
-  { name: "Left Over!", value: income-contributions-expenses},
+  { name: "Left Over!", value: spending},
   { name: "Expense", value: expenses},
 
 ];
@@ -40,8 +41,8 @@ const RADIAN = Math.PI / 180;
     );
   };
   return (
-    <ResponsiveContainer width="100%" height={500}>
-    <PieChart width={800} height={800} style={{display: "flex", justifyContent: "center"}}>
+    <ResponsiveContainer width={410} height={500} style={{display: "flex", justifyContent: "center"}}>
+    <PieChart width={800} height={800}>
       <Pie
         data={data}
         cx={200}

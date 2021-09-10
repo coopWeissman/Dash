@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
-import { BarChart, Legend, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Legend, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 
 
 function Chart(props) {
@@ -13,6 +13,7 @@ function Chart(props) {
     var savings = props.savings;
     var amount = props.amount;
     var final = props.contributions;
+    var intBar = 0;
     const time = "0" ; 
     const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -35,19 +36,21 @@ function Chart(props) {
       for (var i = 0; i < years; i=i+1){
         age = (2021+i)
         savings = Number(savings)
+        final= Number(final)
         // interest = Number(interest)
         for(var x = 0; x< 12; x=x+1){
         retirement= (savings+(final))*(1+interest/12)
         savings= retirement
         }
         savings= savings.toFixed(2)
-
+        intBar= intBar+(final*12)
+        console.log(intBar)
       data.push(
         {
           "name": age,
-          "id": id+i,
+          "id": intBar,
           "uv": 1.1,
-          "Amount(US Dollars)": savings,
+          "Amount(US Dollars)": savings-intBar,
         }
       )
         amount= Number(amount)
@@ -61,8 +64,11 @@ function Chart(props) {
         <YAxis domain={[0, amount+.1*amount]}/>
          <Tooltip />
         <Legend />
-        <Bar dataKey="Amount(US Dollars)" fill="#8884d8" />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Bar dataKey="id" stackId="a" fill="#8884d8" />
+        <Bar dataKey="Amount(US Dollars)" stackId="a" fill="#4caf4f" />
         {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
+
         </BarChart>
       </ResponsiveContainer> 
     
