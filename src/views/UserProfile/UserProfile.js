@@ -56,13 +56,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function UserProfile() {
-  const [interest, setInterest] = useState(.10);
-  const [amount, setAmount] = useState(10000000);
-  const [age, setAge] = useState(16);
-  const [income, setIncome] = useState(1000);
-  const [expenses, setExpenses] = useState(200);
-  const [retirement, setRetirement] = useState(65);
-  const [savings, setSavings] = useState(1000);
+  const [interest, setInterest] = useState();
+  const [amount, setAmount] = useState();
+  const [age, setAge] = useState();
+  const [income, setIncome] = useState();
+  const [expenses, setExpenses] = useState();
+  const [retirement, setRetirement] = useState();
+  const [savings, setSavings] = useState();
   const [final, setFinal] = useState();
   const spending = income-final-expenses;
   const classes = useStyles();
