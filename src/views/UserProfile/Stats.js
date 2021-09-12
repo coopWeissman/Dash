@@ -61,7 +61,7 @@ function Stats(props) {
               <Store />
             </CardIcon>
             <p className={classes.cardCategory}>Fun Money</p>
-            <h3 className={classes.cardTitle}>{(props.spending).toFixed(2)}</h3>
+            <h3 className={classes.cardTitle}>${(props.spending).toFixed(2)}</h3>
           </CardHeader>
           <CardFooter stats>
             <div className={classes.stats}>
@@ -78,7 +78,7 @@ function Stats(props) {
               <Icon>info_outline</Icon>
             </CardIcon>
             <p className={classes.cardCategory}>expenses</p>
-            <h3 className={classes.cardTitle}>{(props.expenses)}</h3>
+            <h3 className={classes.cardTitle}>${(props.expenses)}</h3>
           </CardHeader>
           <CardFooter stats>
             <div className={classes.stats}>
@@ -95,7 +95,7 @@ function Stats(props) {
               <Accessibility />
             </CardIcon>
             <p className={classes.cardCategory}>Savings</p>
-            <h3 className={classes.cardTitle}>{props.savings}</h3>
+            <h3 className={classes.cardTitle}>${props.savings}</h3>
           </CardHeader>
           <CardFooter stats>
             <div className={classes.stats}>

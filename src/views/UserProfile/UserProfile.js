@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function UserProfile() {
+export default function () {
   const [interest, setInterest] = useState();
   const [amount, setAmount] = useState();
   const [age, setAge] = useState();
@@ -205,7 +205,7 @@ export default function UserProfile() {
     </CardBody>
     </Card>
     </Grid>
-    <Grid item xs={12}>
+    {/* <Grid item xs={12}>
       <Card>
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
@@ -217,7 +217,7 @@ export default function UserProfile() {
 
     </CardBody>
     </Card>
-    </Grid>
+    </Grid> */}
     </Grid>
     </GridContainer>
     </div>
