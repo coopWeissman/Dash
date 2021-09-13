@@ -19,7 +19,7 @@ function Chart(props) {
   if (active && payload && payload.length) {
     return (
       <div >
-        <p >hello</p>
+        <p >hell</p>
         <p >hello</p>
         <p >Anything you want can be displayed here.</p>
       </div>
