@@ -15,6 +15,7 @@ import Chart from "./Chart";
 import PieGraph from "./PieGraph";
 import { AutoScaleAxis } from "chartist";
 import Stats from "./Stats";
+import Interest from "./Interest";
 
 const useStyles = makeStyles((theme) => ({
   cardCategoryWhite: {
@@ -55,26 +56,48 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function () {
+    
+function useInterest() {
   const [interest, setInterest] = useState();
-  const [amount, setAmount] = useState();
-  const [age, setAge] = useState();
-  const [income, setIncome] = useState();
-  const [expenses, setExpenses] = useState();
-  const [retirement, setRetirement] = useState();
-  const [savings, setSavings] = useState();
-  const [final, setFinal] = useState();
-  const spending = income-final-expenses;
-  const classes = useStyles();
-  const calculate = () => {
-
-    const result = (interest/12*(amount-savings*(1+interest/12)**((retirement-age)*12)))/((1+interest/12)**((retirement-age)*12)-1)
-    // (r/12*(1000000-I*(1+r/12)**(t*12)))/((1+r/12)**(t*12)-1)
-    const test = (amount-savings)
-    console.log(age)
-    setFinal(result)
+  
+  function hello(){
+      setInterest(e.target.value/100)
+  }
+      return [interest, setInterest];
+  
   };
-  console.log(age)
+function useAge() {
+    const [age, setAge] = useState();
+    
+    function hello(){
+        setInterest(e.target.value/100)
+    }
+        return [age, setAge];
+    
+    };
+
+export default function (props) {
+const [interest, setInterest] = useInterest();
+ const [amount, setAmount] = useState();
+ const [age, setAge] = useAge();
+ const [income, setIncome] = useState();
+ const [expenses, setExpenses] = useState();
+ const [retirement, setRetirement] = useState();
+ const [savings, setSavings] = useState();
+ const [final, setFinal] = useState();
+ const spending = income-final-expenses;
+ const classes = useStyles();
+
+    
+  function calculate() {
+  const result = (interest/12*(amount-savings*(1+interest/12)**((retirement-age)*12)))/((1+interest/12)**((retirement-age)*12)-1)
+    // (r/12*(1000000-I*(1+r/12)**(t*12)))/((1+r/12)**(t*12)-1)
+    const test = (income-savings)
+    console.log(interest*interest)
+    console.log(Number(age)+Number(age))
+    setFinal(result) 
+  };
+
   return (
     <div className="root">
       <GridContainer>
@@ -163,7 +186,7 @@ export default function () {
               <GridContainer>
                 <GridItem xs={6} sm={6} md={6}>
                   <Button color="primary" onClick={calculate}>Calculate</Button>
-                  <Typography>${final}</Typography>
+                  <Typography>Monthly Contibution: ${final}</Typography>
                 </GridItem>
               </GridContainer>
             </CardBody>
@@ -182,8 +205,8 @@ export default function () {
     </Card>
     <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
-              <p className={classes.cardCategoryWhite}>Scroll over each bar to see projected value by year</p>
+              <h4 className={classes.cardTitleWhite}>Important Nubers</h4>
+              <p className={classes.cardCategoryWhite}></p>
             </CardHeader>
             <CardBody>
       <Stats income={income} spending={spending} expenses={expenses} savings={savings}/>
@@ -195,8 +218,8 @@ export default function () {
     <Grid item xs={12}>
       <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Bar Chart Breakdown</h4>
-              <p className={classes.cardCategoryWhite}>Scroll over each bar to see projected value by year</p>
+              <h4 className={classes.cardTitleWhite}>Budget Distribution</h4>
+              <p className={classes.cardCategoryWhite}>salary breakdown</p>
             </CardHeader>
     <CardBody className={classes.centerPie}>
 
@@ -224,4 +247,6 @@ export default function () {
 
 
   );
+  // export const interest
 }
+

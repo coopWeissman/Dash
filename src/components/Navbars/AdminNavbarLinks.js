@@ -18,6 +18,11 @@ import Search from "@material-ui/icons/Search";
 // core components
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
+//Router
+import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
 
@@ -27,6 +32,9 @@ export default function AdminNavbarLinks() {
   const classes = useStyles();
   const [openNotification, setOpenNotification] = React.useState(null);
   const [openProfile, setOpenProfile] = React.useState(null);
+  //routing variables from compounder
+  const [url, setUrl] = React.useState();
+  const history = useHistory();
   const handleClickNotification = (event) => {
     if (openNotification && openNotification.contains(event.target)) {
       setOpenNotification(null);
@@ -46,8 +54,12 @@ export default function AdminNavbarLinks() {
   };
   const handleCloseProfile = () => {
     setOpenProfile(null);
+    //attempt to route on profile click, but its not working
+    setUrl("/admin/user")
+    history.push(url)
   };
   return (
+    <HashRouter>
     <div>
       <div className={classes.searchWrapper}>
         <CustomInput
@@ -220,5 +232,6 @@ export default function AdminNavbarLinks() {
         </Poppers>
       </div>
     </div>
+    </HashRouter>
   );
 }

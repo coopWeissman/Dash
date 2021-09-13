@@ -38,6 +38,8 @@ import {
 } from "variables/charts.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
+import UserProfile from "views/UserProfile/UserProfile";
+import Visual from "views/Dashboard/Visual";
 
 const useStyles = makeStyles(styles);
 
@@ -260,6 +262,7 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
+      <Visual/>
     </div>
   );
 }
